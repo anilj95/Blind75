@@ -24,6 +24,22 @@ public class MotherOfAllLinkedListProblems {
       System.out.println("List after reversal");
       printList(reverse);
       
+   // calling function for merge two list
+      ListNode list1 = new ListNode(1);
+      list1.next = new ListNode(2);
+      list1.next.next = new ListNode(3);
+      
+      ListNode list2 = new ListNode(1);
+      list2.next = new ListNode(3);
+      list2.next.next = new ListNode(4);
+      System.out.println("Lists before merger");
+      printList(list1);
+      printList(list2);
+      System.out.println("Lists after merger");
+      ListNode merged = mergeTwoList(list1,list2);
+      printList(merged);
+      
+      
  
 	}
 	
@@ -84,13 +100,34 @@ public class MotherOfAllLinkedListProblems {
 		return prev; // when curr.next -> null, prev is the head now
 	}
 	
-	// Problem 4: merge two sorted list
-	 private static ListNode mergeTwoSortedLists(ListNode list1, ListNode list2) {
-		 
-		 
-	 }
 	
-	
+	// Problem 4: merge two sorted Lists
+		private static ListNode mergeTwoList(ListNode list1, ListNode list2) {
+			
+			ListNode dummy = new ListNode(0);
+			ListNode curr = dummy;
+			
+			while(list1 != null && list2 != null) {
+				
+				if(list1.val < list2.val) {
+					
+					curr.next = list1;
+					list1 = list1.next;
+				}else {
+					
+					curr.next = list2;
+					list2 = list2.next;
+				}
+				
+				curr = curr.next;
+			}
+			
+			// if anyone finished earlier
+			curr.next = list1 != null? list1 : list2;
+			
+			return dummy.next;
+			
+		}
 	
 	
 	
