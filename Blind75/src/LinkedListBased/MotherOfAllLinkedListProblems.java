@@ -39,6 +39,10 @@ public class MotherOfAllLinkedListProblems {
       ListNode merged = mergeTwoList(list1,list2);
       printList(merged);
       
+   // calling removeNthFromEnd for above merged list
+      ListNode deleted = removeNthFromEnd(merged, 2);
+      printList(deleted);
+      
       
  
 	}
@@ -128,15 +132,39 @@ public class MotherOfAllLinkedListProblems {
 			return dummy.next;
 			
 		}
+		
+	 // Problem 5:Delete Node from kth last position (Suppose 2nd node from last)
+	   private static ListNode removeNthFromEnd(ListNode head, int position) {
+		   
+		   ListNode dummy = new ListNode(0);
+		   
+		   dummy.next = head;
+		   
+		   ListNode slow = dummy, fast = dummy;
+		   
+		   //first move fast pointer up to position(given suppose 2nd) from start
+		   for(int i =0; i<=position ;i++) {
+			   
+			   fast = fast.next;
+		   }
+		   
+		   //now move both slow and fast up to fast != null
+		   while( fast != null) {
+			   
+			   slow = slow.next;
+			   fast = fast.next;
+		   }
+		   
+		   //delete node at that position(as slow has already reached before that node which we want to delete)
+		   slow.next = slow.next.next; // slow.next is that position which we want to delete so by pass that node.
+		   
+		   return dummy.next; // as, it was pointing to head earlier, return the same.
+	   }
+		
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	
 	// Base class
 	static class ListNode{
