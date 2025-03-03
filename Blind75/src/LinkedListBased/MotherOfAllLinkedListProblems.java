@@ -162,8 +162,6 @@ public class MotherOfAllLinkedListProblems {
 	   }
 		
 	
-	
-	
 
 	
 	// Base class
