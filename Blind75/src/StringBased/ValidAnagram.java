@@ -74,6 +74,7 @@ public class ValidAnagram {
 	}
 	
 	// However, Unicode characters (e.g., á, é, ñ, €, 𝛼, 😀) have values beyond 256, and they won't fit into an int[256] array.
+	////Important: for lower/upper case have to take care separately otherwise it gives false
 
     //Solution: Use a HashMap<Character, Integer> Instead
 	
@@ -104,6 +105,7 @@ public class ValidAnagram {
 	}
 	
 	// this is also a generic solution, where we will add and remove from StringBuilder & at last return length of StringBuilder
+	//Important: for lower/upper case have to take care separately otherwise it gives false
 	
 	private static boolean solution4(String str1, String str2) {
 		
